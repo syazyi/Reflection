@@ -33,7 +33,7 @@ public:
 
 
 int main() {
-	kaf::Reflcetion* reflcetionPtr = kaf::Reflcetion::instance();
+	kaf::Reflection* reflcetionPtr = kaf::Reflection::instance();
 	//kaf::ComponentTestA* a = reinterpret_cast<kaf::ComponentTestA*>(reflcetionPtr->CreatClass("ComponentTestA"));
 	kaf::Object* a = reinterpret_cast<kaf::Object*>(reflcetionPtr->CreatClass("ComponentTestA"));
 	a->show();
@@ -48,6 +48,11 @@ int main() {
 
 	b->call("show");
 	
+	b->Call<int, int>("Show", 6, 7);
+	int a666 = 666;
+	int b666 = 777;
+	b->Call("Show", a666, b666);
+}
 #ifdef FUNCTIONTEST
 	FunctionTestClass ftc;
 	ftc.call();
@@ -71,7 +76,3 @@ int main() {
 	auto age = *reinterpret_cast<int*>(reinterpret_cast<size_t>(bTest) + b);
 	std::cout << age << std::endl;
 #endif // TEST
-
-
-
-}

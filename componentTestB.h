@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "reflection.h"
+#include "reflectionRegist.h"
 #include "object.h"
 namespace kaf {
 	class ComponentTestB : public Object{
@@ -11,6 +11,11 @@ namespace kaf {
 		void show() {
 			std::cout << "B now is no member" << std::endl;
 		}
+
+		void Show(int a, int c) {
+			std::cout << "Two Parameter: " << a << ", " << c << std::endl;
+		}
+		REGISTER_CLASSMETHOD_TWOPARAMETER(ComponentTestB, Show, int, int)
 	public:
 		std::string m_name;
 		int m_age = 0; 
@@ -19,4 +24,5 @@ namespace kaf {
 	REGISTER_CLASSFILED(ComponentTestB, m_name, std::string)
 	REGISTER_CLASSFILED(ComponentTestB, m_age, int)
 	REGISTER_CLASSMETHOD(ComponentTestB, show)
+	REGISTER_CLASSMETHODWRAPPER(ComponentTestB, Show)
 }

@@ -11,13 +11,13 @@ namespace kaf {
 	//typedef Object* (*CreatClassFunction)(void);
 	using CreatClassFunction = std::function<Object* (void)>;
 
-	class Reflcetion {
+	class Reflection {
 	public:
-		Reflcetion(const Reflcetion&) = delete;
-		Reflcetion& operator=(const Reflcetion&) = delete;
+		Reflection(const Reflection&) = delete;
+		Reflection& operator=(const Reflection&) = delete;
 
-		static Reflcetion* instance() {
-			static Reflcetion instance;
+		static Reflection* instance() {
+			static Reflection instance;
 			return &instance;
 		}
 		void Register(const std::string& className, CreatClassFunction method);
@@ -34,11 +34,12 @@ namespace kaf {
 		ClassMethod* GetMethod(const std::string& className, const std::string& methodName);
 
 	private:
-		Reflcetion() = default;
+		Reflection() = default;
 		std::map<std::string, CreatClassFunction> m_classMap;
 		std::map<std::string, std::vector<ClassFiled*>> m_classFiledMap;
 		std::map<std::string, std::vector<ClassMethod*>> m_classMethodMap;
-
+		
+		//std::map<std::string, >
 	};
 
 
